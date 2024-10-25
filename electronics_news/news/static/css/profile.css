@@ -1,0 +1,14 @@
+.profile-container {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.profile-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.profile-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+}

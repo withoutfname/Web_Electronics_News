@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>Привет, {{ user.nickname }}!</h2>  <!-- Приветственное сообщение с ником -->
+
+    <form method="POST" action="{% url 'logout' %}">  <!-- Форма для выхода -->
+        {% csrf_token %}
+        <button type="submit">Выйти</button>  <!-- Кнопка выхода -->
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+/* Центрирование контейнера формы */
+.auth-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+
+    /* Центрирование по вертикали и горизонтали */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование содержимого по горизонтали */
+    justify-content: center; /* Центрирование содержимого по вертикали */
+
+
+}
+
+/* Увеличиваем размер шрифта и выравниваем поля */
+.auth-container h2 {
+    text-align: center;
+    font-size: 24px; /* Увеличиваем размер шрифта */
+    margin-bottom: 20px;
+}
+
+.auth-form input,
+.register-form input,
+.password-reset-form input {
+    width: 100%;
+    padding: 12px; /* Увеличиваем отступ внутри полей */
+    font-size: 16px; /* Увеличиваем размер шрифта */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+@media (min-width: 1920px) {
+    .auth-container h2 {
+        font-size: 44px; /* Увеличение размера шрифта заголовка */
+    }
+
+    .auth-form input,
+    .register-form input,
+    .password-reset-form input {
+        font-size: 44px; /* Увеличение размера шрифта полей */
+    }
+}

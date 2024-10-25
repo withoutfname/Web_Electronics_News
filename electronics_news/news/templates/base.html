@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Новости электроники{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Электроника</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}" class="{% if request.path == '/' %}active{% endif %}">Главная</a></li>
+                <li><a href="{% url 'news' %}" class="{% if request.path == '/news/' %}active{% endif %}">Новости</a></li>
+                {% if user.is_authenticated %}    <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile/' %}active{% endif %}">Профиль</a></li>
+{% else %}    <li><a href="{% url 'authorise' %}"
+            class="{% if request.path == '/authorise/' or request.path == '/register/' or request.path == '/password_reset/' %} active{% endif %}">        Вход/регистрация</a></li>
+{% endif %}
+                <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">О нас</a></li>
+            </ul>
+            <div class="contrast-icon-wrapper" onclick="toggleContrastIcon()">
+                <img id="contrast-icon" src="{% static 'images/eye.svg' %}" alt="Contrast Icon">
+            </div>
+            <div class="burger-menu-icon" onclick="toggleBurgerMenu()">
+                &#9776; <!-- Бургер-меню -->
+            </div>
+            <ul class="burger-menu">
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url 'news' %}">Новости</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Профиль</a></li>
+                {% else %}
+                    <li><a href="{% url 'authorise' %}">Вход/регистрация</a></li>
+                {% endif %}
+                <li><a href="{% url 'about' %}">О нас</a></li>
+            </ul>
+        </div>
+    </header>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Новости электроники. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function toggleBurgerMenu() {
+            const burgerMenu = document.querySelector('.burger-menu');
+            burgerMenu.classList.toggle('open'); // Убедитесь, что класс переключается
+        }
+
+        function toggleContrastIcon() {
+            const icon = document.getElementById('contrast-icon');
+            if (icon.src.includes('eye.svg')) {
+                icon.src = '{% static "images/eye-crossed.svg" %}';
+            } else {
+                icon.src = '{% static "images/eye.svg" %}';
+            }
+        }
+
+        // Для установки активной ссылки
+        const navLinks = document.querySelectorAll('.nav-links li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

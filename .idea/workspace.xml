@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Web_Electronics_News.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/css/about.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/css/news.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/css/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/images/eye-crossed.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/images/eye.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/authorization.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/news.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/password_reset.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/registration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/urls.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2noxQknTOkDGbnbpr2aFxR1uNuS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/emilm/PycharmProjects/Web_Electronics_News/electronics_news&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\emilm\PycharmProjects\Web_Electronics_News\electronics_news" />
+      <recent name="C:\Users\emilm\PycharmProjects\Web_Electronics_News\electronics_news\news\static\images" />
+      <recent name="C:\Users\emilm\PycharmProjects\Web_Electronics_News\electronics_news\news\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\emilm\PycharmProjects\Web_Electronics_News\electronics_news\news\static\css" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="" />
+      <created>1729653215620</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729653215620</updated>
+    </task>
+    <servers />
+  </component>
+</project>
