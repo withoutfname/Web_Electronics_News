@@ -2,16 +2,23 @@
 
 {% block title %}Профиль{% endblock %}
 {% load static %}
+
+{% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-{% block extra_css %}{% endblock %}
+{% endblock %}
 
 {% block content %}
 <div class="profile-container">
-    <h2>Привет, {{ user.nickname }}!</h2>  <!-- Приветственное сообщение с ником -->
-
-    <form method="POST" action="{% url 'logout' %}">  <!-- Форма для выхода -->
-        {% csrf_token %}
-        <button type="submit">Выйти</button>  <!-- Кнопка выхода -->
-    </form>
+    <div class="profile-header">
+        <img src="{{ user.avatar.url }}" alt="Аватар" class="avatar">
+        <div class="profile-info">
+            <h2>{{ user.nickname }}</h2>  <!-- Никнейм пользователя -->
+            <a href="{% url 'edit_profile' %}" class="button">Редактировать профиль</a> <!-- Кнопка редактирования -->
+            <form method="POST" action="{% url 'logout' %}">  <!-- Форма для выхода -->
+                {% csrf_token %}
+                <button type="submit" class="button">Выйти</button>  <!-- Кнопка выхода -->
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -36,3 +36,9 @@ class CustomAuthForm(AuthenticationForm):
     username = forms.CharField(max_length=150, widget=forms.TextInput(attrs={'placeholder': 'Логин'}), label="Логин")
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}), label="Пароль")
 
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['nickname', 'avatar']  # Укажите нужные поля
+

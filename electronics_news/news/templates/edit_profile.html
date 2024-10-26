@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактировать профиль{% endblock %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="edit-profile-container">
+    <h2>Редактировать профиль</h2>
+
+    {% if messages %}
+        <div class="alert alert-warning">
+            <strong>Предупреждение!</strong> Изменения не были сохранены.
+        </div>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ edit_profile_form.as_p }}
+        <button type="submit" class="button">Сохранить изменения</button>
+    </form>
+
+    <a href="{% url 'profile' %}" class="button">Назад к профилю</a>
+</div>
+{% endblock %}

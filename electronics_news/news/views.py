@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import RegistrationForm, CustomAuthForm
+from .forms import RegistrationForm, CustomAuthForm, EditProfileForm
 
 
 # Create your views here.
@@ -56,3 +56,16 @@ def password_reset(request):
 def profile_view(request):
     user = request.user  # Получаем текущего аутентифицированного пользователя
     return render(request, 'profile.html', {'nickname': user.userprofile.nickname})
+
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        edit_profile_form = EditProfileForm(request.POST, request.FILES, instance=request.user)
+        if edit_profile_form.is_valid():
+            edit_profile_form.save()
+            return redirect('profile')  # Перенаправление на страницу профиля
+    else:
+        edit_profile_form = EditProfileForm(instance=request.user)
+
+    return render(request, 'edit_profile.html', {'edit_profile_form': edit_profile_form})
