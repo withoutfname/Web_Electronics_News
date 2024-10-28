@@ -13,4 +13,5 @@ urlpatterns = [
     path('password_reset/', views.password_reset, name='password_reset'),
     path('logout/', LogoutView.as_view(next_page='authorise'), name='logout'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+    path('publish_content/', views.publish_content, name='publish_content'),
 ]

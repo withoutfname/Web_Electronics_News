@@ -19,8 +19,6 @@ class UserProfile(AbstractUser):
     def __str__(self):
         return self.username
 
-
-
 class Content(models.Model):
     CONTENT_TYPES = [
         ('news', 'Новости'),
@@ -32,10 +30,22 @@ class Content(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=CONTENT_TYPES)
-    image = models.ImageField(upload_to='news_content/news_images/', blank=True, null=True)  # Поле для изображений
-    video = models.FileField(upload_to='news_content/news_videos/', blank=True, null=True)  # Поле для хранения ссылки на видео
+    age_restriction = models.BooleanField(default=False, verbose_name="Возрастные ограничения")
 
     def __str__(self):
         return self.title
+
+class ContentImage(models.Model):
+    content = models.ForeignKey(Content, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='news_content/news_images/')
+
+class ContentVideo(models.Model):
+    content = models.ForeignKey(Content, related_name='videos', on_delete=models.CASCADE)
+    video = models.FileField(upload_to='news_content/news_videos/')
+
+
+
+
+
 
 

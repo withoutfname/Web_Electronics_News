@@ -3,7 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import RegistrationForm, CustomAuthForm, EditProfileForm
+from .forms import RegistrationForm, CustomAuthForm, EditProfileForm, ContentForm, ContentImageForm, ContentVideoForm
+from .models import Content, ContentImage, ContentVideo
+from .forms import ContentForm, ContentImageFormSet, ContentVideoFormSet
 
 
 # Create your views here.
@@ -69,3 +71,40 @@ def edit_profile(request):
         edit_profile_form = EditProfileForm(instance=request.user)
 
     return render(request, 'edit_profile.html', {'edit_profile_form': edit_profile_form})
+
+
+@login_required
+def publish_content(request):
+    if request.method == 'POST':
+        content_form = ContentForm(request.POST)
+        image_formset = ContentImageFormSet(request.POST, request.FILES, queryset=ContentImage.objects.none())
+        video_formset = ContentVideoFormSet(request.POST, request.FILES, queryset=ContentVideo.objects.none())
+
+        if content_form.is_valid() and image_formset.is_valid() and video_formset.is_valid():
+            content = content_form.save(commit=False)
+            content.author = request.user
+            content.save()
+
+            for form in image_formset:
+                if form.cleaned_data.get('image'):
+                    image = form.save(commit=False)
+                    image.content = content
+                    image.save()
+
+            for form in video_formset:
+                if form.cleaned_data.get('video'):
+                    video = form.save(commit=False)
+                    video.content = content
+                    video.save()
+
+            return redirect('profile')
+    else:
+        content_form = ContentForm()
+        image_formset = ContentImageFormSet(queryset=ContentImage.objects.none())
+        video_formset = ContentVideoFormSet(queryset=ContentVideo.objects.none())
+
+    return render(request, 'publish_content.html', {
+        'content_form': content_form,
+        'image_formset': image_formset,
+        'video_formset': video_formset,
+    })

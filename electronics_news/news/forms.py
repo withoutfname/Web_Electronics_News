@@ -2,7 +2,9 @@ from enum import unique
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import UserProfile
+from django.forms import inlineformset_factory
+
+from .models import UserProfile, Content, ContentImage, ContentVideo
 from django.contrib.auth.forms import AuthenticationForm
 
 class RegistrationForm(UserCreationForm):
@@ -41,4 +43,28 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['nickname', 'avatar']  # Укажите нужные поля
+
+
+
+
+
+
+class ContentForm(forms.ModelForm):
+    class Meta:
+        model = Content
+        fields = ['title', 'content', 'type', 'age_restriction']
+
+class ContentImageForm(forms.ModelForm):
+    class Meta:
+        model = ContentImage
+        fields = ['image']
+
+class ContentVideoForm(forms.ModelForm):
+    class Meta:
+        model = ContentVideo
+        fields = ['video']
+
+ContentImageFormSet = inlineformset_factory(Content, ContentImage, form=ContentImageForm, extra=5, can_delete=True)
+ContentVideoFormSet = inlineformset_factory(Content, ContentVideo, form=ContentVideoForm, extra=5, can_delete=True)
+
 
