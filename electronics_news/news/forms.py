@@ -6,6 +6,7 @@ from django.forms import inlineformset_factory
 
 from .models import UserProfile, Content, ContentImage, ContentVideo
 from django.contrib.auth.forms import AuthenticationForm
+from django.views.generic import DetailView
 
 class RegistrationForm(UserCreationForm):
     username = forms.CharField(max_length=20, required=True, label="Логин")
@@ -31,9 +32,6 @@ class RegistrationForm(UserCreationForm):
 
         return cleaned_data
 
-
-
-
 class CustomAuthForm(AuthenticationForm):
     username = forms.CharField(max_length=150, widget=forms.TextInput(attrs={'placeholder': 'Логин'}), label="Логин")
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}), label="Пароль")
@@ -43,10 +41,6 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['nickname', 'avatar']  # Укажите нужные поля
-
-
-
-
 
 
 class ContentForm(forms.ModelForm):
@@ -66,9 +60,6 @@ class ContentVideoForm(forms.ModelForm):
 
 ContentImageFormSet = inlineformset_factory(Content, ContentImage, form=ContentImageForm, extra=5, can_delete=True)
 ContentVideoFormSet = inlineformset_factory(Content, ContentVideo, form=ContentVideoForm, extra=5, can_delete=True)
-
-from django.views.generic import DetailView
-from .models import Content
 
 class ContentDetailView(DetailView):
     model = Content

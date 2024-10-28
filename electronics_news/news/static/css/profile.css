@@ -1,111 +1,143 @@
 /* Общие стили для профиля */
-.profile-container,
-.edit-profile-container {
-    max-width: 800px;  /* Максимальная ширина контейнера */
-    margin: 20px auto;  /* Центрирование контейнера */
-    padding: 20px;  /* Отступы внутри контейнера */
-    background-color: #f9f9f9;  /* Фоновый цвет */
-    border-radius: 10px;  /* Закругленные углы */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Тень для контейнера */
+.profile-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-header {
-    display: flex;  /* Гибкая компоновка */
-    align-items: center;  /* Выравнивание по центру */
+    display: flex;
+    align-items: center;
 }
 
 .avatar {
-    width: 140px;       /* Увеличенная ширина аватара */
-    height: 140px;      /* Увеличенная высота аватара */
-    border-radius: 10px; /* Закругленные углы (если нужно) */
-    object-fit: cover;  /* Обрезка изображения, чтобы заполнить квадрат */
-    margin-right: 20px; /* Отступ справа для пространства между аватаром и текстом */
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
 }
 
 .profile-info {
-    display: flex;  /* Гибкая компоновка для информации о профиле */
-    flex-direction: column;  /* Вертикальная компоновка */
-    justify-content: space-between; /* Разделяем пространство между элементами */
-    height: 140px; /* Задаем высоту, чтобы соответствовать высоте аватара */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 140px;
 }
 
 h2 {
-    margin: 0;  /* Убираем отступы для заголовка */
-    font-size: 1.5rem;  /* Размер шрифта для никнейма */
-    color: #333;  /* Цвет текста */
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
 }
 
 /* Кнопки */
 .button {
-    display: inline-block;  /* Отображение как блок для кнопок */
-    margin-top: 10px;  /* Уменьшенный отступ сверху */
-    padding: 8px 16px;  /* Уменьшенные отступы внутри кнопок */
-    background-color: #555;  /* Серый цвет фона для кнопок */
-    color: #fff;  /* Цвет текста кнопок */
-    text-decoration: none;  /* Убираем подчеркивание */
-    border-radius: 5px;  /* Закругленные углы для кнопок */
-    border: none;  /* Убираем рамку */
-    cursor: pointer;  /* Указатель при наведении */
-    font-size: 14px;  /* Уменьшенный размер шрифта для кнопок */
-    transition: background-color 0.3s; /* Плавный переход фона при наведении */
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #555;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
 }
 
 .button:hover {
-    background-color: #777;  /* Темнее фон при наведении */
+    background-color: #777;
 }
 
 /* Стили для новостей */
-.released-news-scroll {
-    overflow-x: auto;  /* Включаем горизонтальный скроллинг */
-    white-space: nowrap;  /* Запрещаем перенос строк */
-    padding: 10px 0;  /* Отступы сверху и снизу */
+.released-news-section {
+    margin-top: 20px;
+    padding-top: 10px;
 }
 
-.news-container {
-    display: inline-block; /* Позволяет размещать новости в строку */
+.toggle-news-button {
+    background-color: #777;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.released-news-scroll {
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    overflow-y: hidden; /* Скрываем вертикальную прокрутку */
+    padding: 10px 0;
+    white-space: nowrap; /* Отключаем перенос строк */
+}
+
+.news-container { /* Контейнер для карточек новостей */
+    display: flex; /* Используем flexbox для горизонтального расположения */
+    flex-wrap: nowrap; /* Убедитесь, что карточки не переносятся на новую строку */
+    gap: 10px; /* Расстояние между карточками */
 }
 
 .news-card {
-    display: inline-block; /* Позволяет размещать карточки новостей в строку */
-    width: 200px; /* Установите желаемую ширину карточек */
-    margin-right: 10px; /* Отступ между карточками */
+    flex: 0 0 auto; /* Устанавливаем фиксированную ширину для карточек */
+    width: 200px;
+    height: 260px; /* Фиксированная высота для одинаковых размеров */
+    text-align: center;
+    border-radius: 5px;
+    background-color: #e0e0e0; /* Серый фон для карточки */
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box; /* Учитываем отступы при расчете ширины */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-card:hover {
+    transform: scale(1.05);
 }
 
 .news-thumbnail {
-    width: 100%; /* Изображение занимает всю ширину карточки */
-    height: auto; /* Высота автоматическая для сохранения пропорций */
-    border-radius: 5px; /* Закругленные углы для изображений */
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
 }
 
-
-/* Стили для предупреждений */
-.alert {
-    padding: 15px;  /* Отступы внутри блока предупреждения */
-    background-color: #ffeb3b;  /* Цвет фона для предупреждения */
-    border-left: 6px solid #f44336;  /* Цвет левой границы */
-    margin-bottom: 20px;  /* Отступ снизу */
+.news-title {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px; /* Ограничение ширины заголовка */
+    max-height: 1.2em; /* Ограничение высоты заголовка */
+    margin-top: 10px;
 }
 
 /* Адаптация для больших экранов */
 @media (min-width: 601px) {
-    .profile-container,
-    .edit-profile-container {
-        padding: 30px; /* Увеличенные отступы на больших экранах */
+    .profile-container {
+        padding: 30px;
     }
 
     h2 {
-        font-size: 2rem;  /* Увеличение размера заголовка на больших экранах */
+        font-size: 2rem;
     }
 }
 
 /* Адаптация для маленьких экранов */
 @media (max-width: 600px) {
-    .profile-container,
-    .edit-profile-container {
-        padding: 15px; /* Уменьшенные отступы на маленьких экранах */
+    .profile-container {
+        padding: 15px;
     }
 
     h2 {
-        font-size: 1.5rem;  /* Уменьшение размера заголовка на маленьких экранах */
+        font-size: 1.5rem;
     }
 }
