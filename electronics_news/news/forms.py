@@ -67,4 +67,13 @@ class ContentVideoForm(forms.ModelForm):
 ContentImageFormSet = inlineformset_factory(Content, ContentImage, form=ContentImageForm, extra=5, can_delete=True)
 ContentVideoFormSet = inlineformset_factory(Content, ContentVideo, form=ContentVideoForm, extra=5, can_delete=True)
 
+from django.views.generic import DetailView
+from .models import Content
+
+class ContentDetailView(DetailView):
+    model = Content
+    template_name = 'content_detail.html'  # Adjust as necessary
+    context_object_name = 'content'
+
+
 

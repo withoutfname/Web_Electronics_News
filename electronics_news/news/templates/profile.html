@@ -12,14 +12,48 @@
     <div class="profile-header">
         <img src="{{ user.avatar.url }}" alt="Аватар" class="avatar">
         <div class="profile-info">
-            <h2>{{ user.nickname }}</h2>  <!-- Никнейм пользователя -->
+            <h2>{{ nickname }}</h2> <!-- Никнейм пользователя -->
             <a href="{% url 'edit_profile' %}" class="button">Редактировать профиль</a> <!-- Кнопка редактирования -->
-            <form method="POST" action="{% url 'logout' %}">  <!-- Форма для выхода -->
+            <form method="POST" action="{% url 'logout' %}"> <!-- Форма для выхода -->
                 {% csrf_token %}
-                <button type="submit" class="button">Выйти</button>  <!-- Кнопка выхода -->
+                <button type="submit" class="button">Выйти</button> <!-- Кнопка выхода -->
             </form>
         </div>
     </div>
+
     <a href="{% url 'publish_content' %}" class="button">Выпустить новость</a>
+
+    <div class="released-news-section">
+        <h3>Выпущенные новости</h3>
+        <button class="toggle-news-button">Показать новости</button> <!-- Кнопка для раскрытия новостей -->
+        <div class="released-news-scroll" style="display: none;"> <!-- По умолчанию скрыто -->
+            {% for news in published_news %}
+            <div class="news-card">
+                <a href="{% url 'content_detail' news.id %}">
+                    <div class="news-title">{{ news.title }}</div>
+                    {% if news.images.first %}
+                        <img src="{{ news.images.first.image.url }}" alt="News Image" class="news-thumbnail">
+                    {% endif %}
+                </a>
+            </div>
+            {% empty %}
+            <p>Вы еще не выпустили новости.</p>
+            {% endfor %}
+        </div>
+    </div>
 </div>
+
+<script>
+    // Добавим функциональность для раскрытия и скрытия новостей
+    document.querySelector('.toggle-news-button').addEventListener('click', function() {
+        const newsScroll = document.querySelector('.released-news-scroll');
+        if (newsScroll.style.display === 'none') {
+            newsScroll.style.display = 'block';
+            this.textContent = 'Скрыть новости';
+        } else {
+            newsScroll.style.display = 'none';
+            this.textContent = 'Показать новости';
+        }
+    });
+</script>
 {% endblock %}

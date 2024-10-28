@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ content.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ content.title }}</h2>
+<p>{{ content.content }}</p>
+
+{% if content.images.exists %}
+    <div class="news-images">
+        {% for image in content.images.all %}
+            <img src="{{ image.image.url }}" alt="News Image">
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if content.videos.exists %}
+    <div class="news-videos">
+        {% for video in content.videos.all %}
+            <video controls>
+                <source src="{{ video.video.url }}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}

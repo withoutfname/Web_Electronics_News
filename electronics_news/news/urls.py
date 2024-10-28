@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth.views import LogoutView
+from .views import ContentDetailView
 
 
 urlpatterns = [
@@ -14,4 +15,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='authorise'), name='logout'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('publish_content/', views.publish_content, name='publish_content'),
+    path('content_detail/<int:id>/', ContentDetailView.as_view(), name='content_detail'),
+
 ]

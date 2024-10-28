@@ -1,10 +1,12 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.views.generic import DetailView
+
 from .forms import RegistrationForm, CustomAuthForm, EditProfileForm, ContentForm, ContentImageForm, ContentVideoForm
-from .models import Content, ContentImage, ContentVideo
+from .models import Content, ContentImage, ContentVideo, UserProfile
 from .forms import ContentForm, ContentImageFormSet, ContentVideoFormSet
 
 
@@ -54,10 +56,16 @@ def authorise(request):
 def password_reset(request):
     return render(request, "password_reset.html")
 
+
 @login_required
-def profile_view(request):
-    user = request.user  # Получаем текущего аутентифицированного пользователя
-    return render(request, 'profile.html', {'nickname': user.userprofile.nickname})
+def profile(request):
+    user = request.user  # Получаем текущего пользователя
+    published_news = Content.objects.filter(author=user)  # Загружаем новости текущего пользователя
+
+    return render(request, 'profile.html', {
+        'nickname': user.nickname,
+        'published_news': published_news,
+    })
 
 
 @login_required
@@ -108,3 +116,18 @@ def publish_content(request):
         'image_formset': image_formset,
         'video_formset': video_formset,
     })
+
+@login_required
+def content_detail(request, id):
+    content = get_object_or_404(Content, id=id)
+    return render(request, 'content_detail.html', {'content': content})
+
+class ContentDetailView(DetailView):
+    model = Content  # Указываем модель
+    template_name = 'content_detail.html'  # Укажите ваш шаблон
+    context_object_name = 'content'  # Имя контекста для шаблона
+
+    def get_object(self):
+        # Переопределяем метод, чтобы получить объект по ID
+        obj = get_object_or_404(Content, id=self.kwargs['id'])
+        return obj
