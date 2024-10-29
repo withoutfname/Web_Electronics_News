@@ -1,0 +1,61 @@
+/* Основные стили контейнера */
+.profile-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Стили для форм */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > h3 {
+    margin-top: 15px;
+}
+
+button[type="submit"],
+a.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover,
+a.button:hover {
+    background-color: #777;
+}
+
+/* Скрываем чекбоксы и текст "Удалить:" */
+input[type="checkbox"][name$="-DELETE"] {
+    display: none;
+}
+
+label[for$="-DELETE"] {
+    display: none;
+}

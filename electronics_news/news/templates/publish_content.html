@@ -5,7 +5,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/publish_content.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -18,13 +18,17 @@
         <h3>Изображения</h3>
         {{ image_formset.management_form }}
         {% for form in image_formset %}
-            {{ form.as_p }}
+            <div class="image-form">
+                {{ form.as_p }}
+            </div>
         {% endfor %}
 
         <h3>Видео</h3>
         {{ video_formset.management_form }}
         {% for form in video_formset %}
-            {{ form.as_p }}
+            <div class="video-form">
+                {{ form.as_p }}
+            </div>
         {% endfor %}
 
         <button type="submit" class="button">Опубликовать</button>

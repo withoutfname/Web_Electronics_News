@@ -16,5 +16,7 @@ urlpatterns = [
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('publish_content/', views.publish_content, name='publish_content'),
     path('content_detail/<int:id>/', ContentDetailView.as_view(), name='content_detail'),
+    path('edit_content/<int:content_id>/', views.edit_content, name='edit_content'),
+    path('delete_content/<int:content_id>/', views.delete_content, name='delete_content'),
 
 ]

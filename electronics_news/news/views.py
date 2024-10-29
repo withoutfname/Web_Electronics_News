@@ -131,3 +131,26 @@ class ContentDetailView(DetailView):
         # Переопределяем метод, чтобы получить объект по ID
         obj = get_object_or_404(Content, id=self.kwargs['id'])
         return obj
+
+@login_required
+def edit_content(request, content_id):
+    content = get_object_or_404(Content, id=content_id)
+
+    if request.method == 'POST':
+        form = ContentForm(request.POST, request.FILES, instance=content)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')  # Замените на нужный URL после успешного редактирования
+    else:
+        form = ContentForm(instance=content)
+
+    return render(request, 'edit_content.html', {'form': form, 'content': content})
+
+@login_required
+def delete_content(request, content_id):
+    content = get_object_or_404(Content, id=content_id)
+    if request.method == 'POST':
+        content.delete()
+        return redirect('profile')  # Замените на нужный URL после успешного удаления
+    return render(request, 'confirm_delete.html', {'content': content})
+

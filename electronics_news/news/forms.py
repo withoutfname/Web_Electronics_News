@@ -59,7 +59,7 @@ class ContentVideoForm(forms.ModelForm):
         fields = ['video']
 
 ContentImageFormSet = inlineformset_factory(Content, ContentImage, form=ContentImageForm, extra=5, can_delete=True)
-ContentVideoFormSet = inlineformset_factory(Content, ContentVideo, form=ContentVideoForm, extra=5, can_delete=True)
+ContentVideoFormSet = inlineformset_factory(Content, ContentVideo, form=ContentVideoForm, extra=5, can_delete=False)
 
 class ContentDetailView(DetailView):
     model = Content

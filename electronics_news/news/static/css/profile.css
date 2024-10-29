@@ -12,6 +12,11 @@
     display: flex;
     align-items: center;
 }
+/* Скрывает чекбоксы удаления для страницы выпуска новости */
+.profile-container .delete-checkbox {
+    display: none;
+}
+
 
 .avatar {
     width: 140px;
@@ -53,72 +58,8 @@ h2 {
     background-color: #777;
 }
 
-/* Стили для новостей */
-.released-news-section {
-    margin-top: 20px;
-    padding-top: 10px;
-}
 
-.toggle-news-button {
-    background-color: #777;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
 
-.released-news-scroll {
-    overflow-x: auto; /* Горизонтальная прокрутка */
-    overflow-y: hidden; /* Скрываем вертикальную прокрутку */
-    padding: 10px 0;
-    white-space: nowrap; /* Отключаем перенос строк */
-}
-
-.news-container { /* Контейнер для карточек новостей */
-    display: flex; /* Используем flexbox для горизонтального расположения */
-    flex-wrap: nowrap; /* Убедитесь, что карточки не переносятся на новую строку */
-    gap: 10px; /* Расстояние между карточками */
-}
-
-.news-card {
-    flex: 0 0 auto; /* Устанавливаем фиксированную ширину для карточек */
-    width: 200px;
-    height: 260px; /* Фиксированная высота для одинаковых размеров */
-    text-align: center;
-    border-radius: 5px;
-    background-color: #e0e0e0; /* Серый фон для карточки */
-    overflow: hidden;
-    padding: 10px;
-    box-sizing: border-box; /* Учитываем отступы при расчете ширины */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.news-card:hover {
-    transform: scale(1.05);
-}
-
-.news-thumbnail {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-}
-
-.news-title {
-    font-size: 1rem;
-    color: #333;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px; /* Ограничение ширины заголовка */
-    max-height: 1.2em; /* Ограничение высоты заголовка */
-    margin-top: 10px;
-}
 
 /* Адаптация для больших экранов */
 @media (min-width: 601px) {

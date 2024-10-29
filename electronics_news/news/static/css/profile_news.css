@@ -1,0 +1,88 @@
+/* profile_news.css */
+
+/* Стили для раздела "Выпущенные новости" */
+.released-news-section {
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.toggle-news-button {
+    background-color: #777;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.released-news-scroll {
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    overflow-y: hidden; /* Скрываем вертикальную прокрутку */
+    padding: 10px 0;
+    white-space: nowrap; /* Отключаем перенос строк */
+}
+
+.news-container {
+    display: flex; /* Горизонтальное расположение карточек */
+    flex-wrap: nowrap; /* Отключаем перенос строк */
+    gap: 10px; /* Расстояние между карточками */
+}
+
+.news-card {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 260px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-card:hover {
+    transform: scale(1.05);
+}
+
+.news-thumbnail {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+.news-title {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+    max-height: 1.2em;
+    margin-top: 10px;
+}
+
+.news-actions {
+    margin-top: 10px; /* Отступ сверху */
+    display: flex; /* Используем flexbox для размещения кнопок */
+    justify-content: space-between; /* Распределяем кнопки по горизонтали */
+}
+
+.news-actions .button {
+    padding: 5px 10px; /* Паддинг для кнопок */
+    font-size: 12px; /* Размер шрифта */
+    background-color: #555; /* Цвет фона кнопок */
+    color: #fff; /* Цвет текста кнопок */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Скругление углов */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+.news-actions .button:hover {
+    background-color: #777; /* Цвет кнопки при наведении */
+}

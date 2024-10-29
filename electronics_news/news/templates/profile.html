@@ -5,6 +5,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile_news.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -36,6 +37,13 @@
                             <img src="{{ news.images.first.image.url }}" alt="News Image" class="news-thumbnail">
                         {% endif %}
                     </a>
+                    <div class="news-actions">
+                        <a href="{% url 'edit_content' news.id %}" class="button edit-button">Редактировать</a>
+                        <form method="POST" action="{% url 'delete_content' news.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="button delete-button" onclick="return confirm('Вы уверены, что хотите удалить эту новость?');">Удалить</button>
+                        </form>
+                    </div>
                 </div>
                 {% empty %}
                 <p>Вы еще не выпустили новости.</p>
