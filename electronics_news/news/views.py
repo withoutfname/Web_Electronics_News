@@ -1,14 +1,17 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.views.generic import DetailView
-
-from .forms import RegistrationForm, CustomAuthForm, EditProfileForm, ContentForm, ContentImageForm, ContentVideoForm
+from .forms import (
+    RegistrationForm,
+    CustomAuthForm,
+    EditProfileForm,
+    ContentForm,
+    ContentImageFormSet,
+    ContentVideoFormSet
+)
 from .models import Content, ContentImage, ContentVideo, UserProfile
-from .forms import ContentForm, ContentImageFormSet, ContentVideoFormSet
-
 
 # Create your views here.
 
@@ -20,10 +23,6 @@ def index(request):
 
 def news(request):
     return render(request, "news.html")
-
-def profile(request):
-    return render(request, "profile.html")
-
 
 def register(request):
     if request.method == 'POST':
@@ -39,7 +38,6 @@ def register(request):
 
     return render(request, 'registration.html', {'register_form': register_form})
 
-
 def authorise(request):
     if request.method == 'POST':
         form = CustomAuthForm(request, data=request.POST)
@@ -52,21 +50,14 @@ def authorise(request):
 
     return render(request, 'authorization.html', {'auth_form': form})
 
-
-def password_reset(request):
-    return render(request, "password_reset.html")
-
-
 @login_required
 def profile(request):
-    user = request.user  # Получаем текущего пользователя
-    published_news = Content.objects.filter(author=user)  # Загружаем новости текущего пользователя
-
+    user = request.user
+    published_news = Content.objects.filter(author=user)
     return render(request, 'profile.html', {
         'nickname': user.nickname,
         'published_news': published_news,
     })
-
 
 @login_required
 def edit_profile(request):
@@ -80,13 +71,12 @@ def edit_profile(request):
 
     return render(request, 'edit_profile.html', {'edit_profile_form': edit_profile_form})
 
-
 @login_required
 def publish_content(request):
     if request.method == 'POST':
         content_form = ContentForm(request.POST)
-        image_formset = ContentImageFormSet(request.POST, request.FILES, queryset=ContentImage.objects.none())
-        video_formset = ContentVideoFormSet(request.POST, request.FILES, queryset=ContentVideo.objects.none())
+        image_formset = ContentImageFormSet(request.POST, request.FILES)
+        video_formset = ContentVideoFormSet(request.POST, request.FILES)
 
         if content_form.is_valid() and image_formset.is_valid() and video_formset.is_valid():
             content = content_form.save(commit=False)
@@ -123,34 +113,149 @@ def content_detail(request, id):
     return render(request, 'content_detail.html', {'content': content})
 
 class ContentDetailView(DetailView):
-    model = Content  # Указываем модель
-    template_name = 'content_detail.html'  # Укажите ваш шаблон
-    context_object_name = 'content'  # Имя контекста для шаблона
+    model = Content
+    template_name = 'content_detail.html'
+    context_object_name = 'content'
 
     def get_object(self):
-        # Переопределяем метод, чтобы получить объект по ID
-        obj = get_object_or_404(Content, id=self.kwargs['id'])
-        return obj
+        return get_object_or_404(Content, id=self.kwargs['id'])
+''' 
+@login_required
+def edit_content(request, content_id):
+    content = get_object_or_404(Content, id=content_id)
+    if request.method == 'POST':
+        form = ContentForm(request.POST, instance=content)
+        image_formset = ContentImageFormSet(request.POST, request.FILES, instance=content)
+        video_formset = ContentVideoFormSet(request.POST, request.FILES, instance=content)
+
+        if form.is_valid() and image_formset.is_valid() and video_formset.is_valid():
+            content = form.save()
+
+            # Обрабатываем изображения
+            for image_form in image_formset:
+                if image_form.cleaned_data.get('DELETE'):
+                    image = image_form.instance
+                    image.delete()
+                else:
+                    image_form.save()
+
+            # Обрабатываем видео
+            for video_form in video_formset:
+                if video_form.cleaned_data.get('DELETE'):
+                    video = video_form.instance
+                    video.delete()
+                else:
+                    video_form.save()
+
+            return redirect('content_detail', id=content.id)
+
+    else:
+        form = ContentForm(instance=content)
+        image_formset = ContentImageFormSet(instance=content)
+        video_formset = ContentVideoFormSet(instance=content)
+
+    return render(request, 'edit_content.html', {
+        'form': form,
+        'image_formset': image_formset,
+        'video_formset': video_formset,
+        'content': content
+    })
+'''
 
 @login_required
 def edit_content(request, content_id):
     content = get_object_or_404(Content, id=content_id)
+    existing_images = content.images.all()
+    existing_videos = content.videos.all()
+
+    available_slots = 5
+    # Рассчитываем оставшиеся слоты для новых изображений
+    remaining_image_slots = available_slots - existing_images.count()
+    remaining_video_slots = available_slots - existing_videos.count()
+
+    available_image_slots = list(range(remaining_image_slots))
+    available_video_slots = list(range(remaining_video_slots))
+
 
     if request.method == 'POST':
-        form = ContentForm(request.POST, request.FILES, instance=content)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')  # Замените на нужный URL после успешного редактирования
-    else:
-        form = ContentForm(instance=content)
+        # Обновление заголовка и описания
+        content.title = request.POST.get('title')
+        content.content = request.POST.get('content')
+        content.save()
 
-    return render(request, 'edit_content.html', {'form': form, 'content': content})
+        # Обработка удаления изображений
+        for image in existing_images:
+            if f'delete_image_{image.id}' in request.POST:
+                image.delete()
+                messages.success(request, f'Изображение {image.id} успешно удалено.')
+
+        # Обработка загрузки новых изображений
+        if 'images' in request.FILES:
+            for file in request.FILES.getlist('images'):
+                if remaining_image_slots > 0:
+                    ContentImage.objects.create(content=content, image=file)
+                    remaining_image_slots -= 1
+
+        # Обработка удаления видео
+        for video in existing_videos:
+            if f'delete_video_{video.id}' in request.POST:
+                video.delete()
+                messages.success(request, f'Видео {video.id} успешно удалено.')
+
+        # Обработка загрузки новых видео
+        if 'videos' in request.FILES:
+            for file in request.FILES.getlist('videos'):
+                ContentVideo.objects.create(content=content, video=file)
+
+        messages.success(request, 'Контент успешно обновлён.')
+        return redirect('edit_content', content_id=content.id)
+
+    return render(request, 'edit_content.html', {
+        'content': content,
+        'existing_images': existing_images,
+        'existing_videos': existing_videos,
+        'available_image_slots': available_image_slots,
+        'available_video_slots': available_video_slots,
+    })
+
+
+
+
+
+@login_required
+def delete_image(request, image_id):
+    image = get_object_or_404(ContentImage, id=image_id)
+    # Добавьте логику удаления файла и записи, если требуется
+    image.delete()
+    return redirect('название_страницы_или_url_название')
+
+@login_required
+def delete_video(request, video_id):
+    video = get_object_or_404(ContentVideo, id=video_id)
+    video.delete()
+    return redirect('название_страницы_или_url_название')
 
 @login_required
 def delete_content(request, content_id):
     content = get_object_or_404(Content, id=content_id)
     if request.method == 'POST':
         content.delete()
-        return redirect('profile')  # Замените на нужный URL после успешного удаления
+        messages.success(request, 'Контент успешно удален.')
+        return redirect('profile')
     return render(request, 'confirm_delete.html', {'content': content})
 
+@login_required
+def delete_media(request, media_id, media_type):
+    if media_type == 'image':
+        media = get_object_or_404(ContentImage, id=media_id)
+    elif media_type == 'video':
+        media = get_object_or_404(ContentVideo, id=media_id)
+    else:
+        return redirect('profile')  # или любой другой подходящий URL
+
+    if request.method == 'POST':
+        media.delete()
+        messages.success(request, f'{media_type.capitalize()} успешно удалено.')
+        return redirect('edit_content', content_id=media.content.id)
+
+    return render(request, 'confirm_delete_media.html', {'media': media, 'media_type': media_type})

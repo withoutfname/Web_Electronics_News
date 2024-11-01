@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Редактировать новость{% endblock %}
-
-{% load static %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/publish_content.css' %}">
@@ -11,11 +10,49 @@
 {% block content %}
 <div class="profile-container">
     <h2>Редактировать новость</h2>
-    <form method="post" enctype="multipart/form-data">
+
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="button">Сохранить изменения</button>
+
+        <h3>Редактировать контент</h3>
+        <label for="title">Заголовок:</label>
+        <input type="text" name="title" id="title" value="{{ content.title }}" required>
+
+        <label for="content">Описание:</label>
+        <textarea name="content" id="content" required>{{ content.content }}</textarea>
+
+        <h3>Уже загруженные изображения</h3>
+        {% for image in existing_images %}
+            <div class="uploaded-media">
+                <img src="{{ image.image.url }}" alt="Изображение" width="150">
+                <input type="checkbox" name="delete_image_{{ image.id }}"> Удалить
+            </div>
+        {% empty %}
+            <p>Нет загруженных изображений.</p>
+        {% endfor %}
+
+        <h3>Добавить изображения</h3>
+        {% for slot in available_image_slots %}
+            <input type="file" name="images" accept="image/*">  <!-- Поле для загрузки нового изображения -->
+        {% endfor %}
+
+        <h3>Уже загруженные видео</h3>
+        {% for video in existing_videos %}
+            <div class="uploaded-media">
+                <video src="{{ video.video.url }}" controls width="150"></video>
+                <input type="checkbox" name="delete_video_{{ video.id }}"> Удалить
+            </div>
+        {% empty %}
+            <p>Нет загруженных видео.</p>
+        {% endfor %}
+
+        <h3>Добавить видео</h3>
+        {% for slot in available_video_slots %}
+            <input type="file" name="videos" accept="video/*">  <!-- Поле для загрузки нового видео -->
+        {% endfor %}
+
+        <button type="submit">Сохранить</button>
     </form>
-    <a href="{% url 'profile' %}" class="button">Назад к профилю</a>
+
 </div>
 {% endblock %}
