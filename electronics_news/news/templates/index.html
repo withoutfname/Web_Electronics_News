@@ -2,11 +2,34 @@
 
 {% block title %}Главная{% endblock %}
 {% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-{% block extra_css %}{% endblock %}
 
-
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
 
 {% block content %}
+<div class="content-container">
+    <!-- Баннер -->
+    <div class="banner">
+        <h1>Добро пожаловать на наш сайт новостей и обзоров!</h1>
+        <p>Следите за последними новостями и обзорами из мира электроники и игровой индустрии.</p>
+    </div>
 
+    <!-- Блок с последними новостями и обзорами -->
+    <div class="latest-content">
+        <h2>Последние новости и обзоры</h2>
+        <div class="content-cards">
+            {% for news in latest_news %}
+                <div class="content-card">
+                    <h3>{{ news.title }}</h3>
+                    <p>{{ news.content|truncatewords:15 }}</p>
+                    <p>Автор: {{ news.author.username }} | Дата: {{ news.created_at|date:"d.m.Y" }}</p>
+                    <a href="{% url 'content_detail' news.id %}">Читать далее</a>
+                </div>
+            {% empty %}
+                <p>Нет доступных новостей или обзоров.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

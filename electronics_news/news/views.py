@@ -19,7 +19,8 @@ def about(request):
     return render(request, "about.html")
 
 def index(request):
-    return render(request, "index.html")
+    latest_news = Content.objects.order_by('-created_at')[:6]  # Отображаем последние 6 новостей/обзоров
+    return render(request, 'index.html', {'latest_news': latest_news})
 
 def news(request):
     return render(request, "news.html")
@@ -119,48 +120,6 @@ class ContentDetailView(DetailView):
 
     def get_object(self):
         return get_object_or_404(Content, id=self.kwargs['id'])
-''' 
-@login_required
-def edit_content(request, content_id):
-    content = get_object_or_404(Content, id=content_id)
-    if request.method == 'POST':
-        form = ContentForm(request.POST, instance=content)
-        image_formset = ContentImageFormSet(request.POST, request.FILES, instance=content)
-        video_formset = ContentVideoFormSet(request.POST, request.FILES, instance=content)
-
-        if form.is_valid() and image_formset.is_valid() and video_formset.is_valid():
-            content = form.save()
-
-            # Обрабатываем изображения
-            for image_form in image_formset:
-                if image_form.cleaned_data.get('DELETE'):
-                    image = image_form.instance
-                    image.delete()
-                else:
-                    image_form.save()
-
-            # Обрабатываем видео
-            for video_form in video_formset:
-                if video_form.cleaned_data.get('DELETE'):
-                    video = video_form.instance
-                    video.delete()
-                else:
-                    video_form.save()
-
-            return redirect('content_detail', id=content.id)
-
-    else:
-        form = ContentForm(instance=content)
-        image_formset = ContentImageFormSet(instance=content)
-        video_formset = ContentVideoFormSet(instance=content)
-
-    return render(request, 'edit_content.html', {
-        'form': form,
-        'image_formset': image_formset,
-        'video_formset': video_formset,
-        'content': content
-    })
-'''
 
 @login_required
 def edit_content(request, content_id):
@@ -259,3 +218,16 @@ def delete_media(request, media_id, media_type):
         return redirect('edit_content', content_id=media.content.id)
 
     return render(request, 'confirm_delete_media.html', {'media': media, 'media_type': media_type})
+
+
+def news_reviews(request):
+    # Фильтрация новостей и обзоров
+    news_list = Content.objects.filter(type='news').order_by('-created_at')
+    review_list = Content.objects.filter(type='review').order_by('-created_at')
+
+    # Передача данных в шаблон
+    context = {
+        'news_list': news_list,
+        'review_list': review_list,
+    }
+    return render(request, 'news.html', context)

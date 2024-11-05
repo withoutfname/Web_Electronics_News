@@ -5,29 +5,37 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/profile_news.css' %}">
+<link rel="stylesheet" href="{% static 'css/content_detail.css' %}">
 {% endblock %}
 
 {% block content %}
-<h2>{{ content.title }}</h2>
-<p>{{ content.content }}</p>
+<div class="content-container">
+    <h2>{{ content.title }}</h2>
 
-{% if content.images.exists %}
-    <div class="news-images">
-        {% for image in content.images.all %}
-            <img src="{{ image.image.url }}" alt="News Image">
-        {% endfor %}
+    <div class="content-info">
+        <p>Автор: {{ content.author.username }}</p>
+        <p>Дата выпуска: {{ content.created_at|date:"d M Y" }}</p>
     </div>
-{% endif %}
 
-{% if content.videos.exists %}
-    <div class="news-videos">
-        {% for video in content.videos.all %}
-            <video controls>
-                <source src="{{ video.video.url }}" type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
-        {% endfor %}
-    </div>
-{% endif %}
+    {% if content.images.exists %}
+        <div class="news-images">
+            {% for image in content.images.all %}
+                <img src="{{ image.image.url }}" alt="News Image">
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if content.videos.exists %}
+        <div class="news-videos">
+            {% for video in content.videos.all %}
+                <video controls>
+                    <source src="{{ video.video.url }}" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <p class="content-text">{{ content.content }}</p>
+</div>
 {% endblock %}
