@@ -1,5 +1,6 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.views.generic import DetailView
@@ -21,9 +22,6 @@ def about(request):
 def index(request):
     latest_news = Content.objects.order_by('-created_at')[:6]
     return render(request, 'index.html', {'latest_news': latest_news})
-
-def news(request):
-    return render(request, "news.html")
 
 def register(request):
     if request.method == 'POST':
@@ -215,11 +213,22 @@ def delete_media(request, media_id, media_type):
 
 
 def news_reviews(request):
+
     news_list = Content.objects.filter(type='news').order_by('-created_at')
     review_list = Content.objects.filter(type='review').order_by('-created_at')
+
+    news_paginator = Paginator(news_list, 5)
+    review_paginator = Paginator(review_list, 5)
+
+    news_page_number = request.GET.get('news_page')
+    review_page_number = request.GET.get('review_page')
+
+    news_page_obj = news_paginator.get_page(news_page_number)
+    review_page_obj = review_paginator.get_page(review_page_number)
+
     context = {
-        'news_list': news_list,
-        'review_list': review_list,
+        'news_page_obj': news_page_obj,
+        'review_page_obj': review_page_obj,
     }
     return render(request, 'news.html', context)
 

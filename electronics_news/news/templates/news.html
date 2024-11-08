@@ -6,12 +6,11 @@
     <link rel="stylesheet" href="{% static 'css/news.css' %}">
 {% endblock %}
 
-
 {% block content %}
 <div class="content-container">
     <h2>Новости</h2>
     <div class="news-section">
-        {% for news in news_list %}
+        {% for news in news_page_obj %}
             <div class="news-card">
                 <h3>{{ news.title }}</h3>
                 <p class="news-meta">
@@ -25,9 +24,22 @@
         {% endfor %}
     </div>
 
+
+    <div class="pagination">
+        {% if news_page_obj.has_previous %}
+            <a href="?news_page={{ news_page_obj.previous_page_number }}">&laquo; Предыдущая</a>
+        {% endif %}
+
+        <span>Страница {{ news_page_obj.number }} из {{ news_page_obj.paginator.num_pages }}</span>
+
+        {% if news_page_obj.has_next %}
+            <a href="?news_page={{ news_page_obj.next_page_number }}">Следующая &raquo;</a>
+        {% endif %}
+    </div>
+
     <h2>Обзоры</h2>
     <div class="review-section">
-        {% for review in review_list %}
+        {% for review in review_page_obj %}
             <div class="news-card">
                 <h3>{{ review.title }}</h3>
                 <p class="news-meta">
@@ -39,6 +51,19 @@
         {% empty %}
             <p>Нет обзоров для отображения.</p>
         {% endfor %}
+    </div>
+
+
+    <div class="pagination">
+        {% if review_page_obj.has_previous %}
+            <a href="?review_page={{ review_page_obj.previous_page_number }}">&laquo; Предыдущая</a>
+        {% endif %}
+
+        <span>Страница {{ review_page_obj.number }} из {{ review_page_obj.paginator.num_pages }}</span>
+
+        {% if review_page_obj.has_next %}
+            <a href="?review_page={{ review_page_obj.next_page_number }}">Следующая &raquo;</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
