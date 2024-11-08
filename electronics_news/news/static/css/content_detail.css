@@ -1,4 +1,4 @@
-/* profile_news.css */
+
 
 .content-container {
     max-width: 800px;
@@ -13,7 +13,7 @@ h2 {
     color: #333;
 }
 
-/* Информация об авторе и дате */
+
 .content-info {
     text-align: center;
     font-size: 0.9em;
@@ -21,7 +21,7 @@ h2 {
     margin-top: 5px;
 }
 
-/* Галерея изображений */
+
 .news-images {
     display: flex;
     flex-wrap: wrap;
@@ -37,7 +37,7 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Видео блок */
+
 .news-videos {
     display: flex;
     flex-direction: column;
@@ -53,7 +53,7 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Контейнер для текста */
+
 .content-text {
     font-size: 1.1em;
     line-height: 1.6;

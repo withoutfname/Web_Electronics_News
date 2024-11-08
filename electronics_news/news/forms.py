@@ -3,7 +3,6 @@ from enum import unique
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import inlineformset_factory
-
 from .models import UserProfile, Content, ContentImage, ContentVideo
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import DetailView
@@ -29,7 +28,7 @@ class RegistrationForm(UserCreationForm):
         password1 = cleaned_data.get("password1")
         password2 = cleaned_data.get("password2")
 
-        # Проверка на совпадение паролей
+
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Пароли не совпадают.")
 
@@ -43,7 +42,7 @@ class CustomAuthForm(AuthenticationForm):
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['nickname', 'avatar']  # Укажите нужные поля
+        fields = ['nickname', 'avatar']
 
 class ContentForm(forms.ModelForm):
     class Meta:
@@ -66,7 +65,7 @@ ContentVideoFormSet = inlineformset_factory(Content, ContentVideo, form=ContentV
 
 class ContentDetailView(DetailView):
     model = Content
-    template_name = 'content_detail.html'  # Adjust as necessary
+    template_name = 'content_detail.html'
     context_object_name = 'content'
 
 

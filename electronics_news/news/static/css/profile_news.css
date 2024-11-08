@@ -1,6 +1,4 @@
-/* profile_news.css */
 
-/* Стили для раздела "Выпущенные новости" */
 .released-news-section {
     margin-top: 20px;
     padding-top: 10px;
@@ -17,16 +15,16 @@
 }
 
 .released-news-scroll {
-    overflow-x: auto; /* Горизонтальная прокрутка */
-    overflow-y: hidden; /* Скрываем вертикальную прокрутку */
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: 10px 0;
-    white-space: nowrap; /* Отключаем перенос строк */
+    white-space: nowrap;
 }
 
 .news-container {
-    display: flex; /* Горизонтальное расположение карточек */
-    flex-wrap: nowrap; /* Отключаем перенос строк */
-    gap: 10px; /* Расстояние между карточками */
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
 }
 
 .news-card {
@@ -68,21 +66,21 @@
 }
 
 .news-actions {
-    margin-top: 10px; /* Отступ сверху */
-    display: flex; /* Используем flexbox для размещения кнопок */
-    justify-content: space-between; /* Распределяем кнопки по горизонтали */
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .news-actions .button {
-    padding: 5px 10px; /* Паддинг для кнопок */
-    font-size: 12px; /* Размер шрифта */
-    background-color: #555; /* Цвет фона кнопок */
-    color: #fff; /* Цвет текста кнопок */
-    border: none; /* Убираем рамку */
-    border-radius: 5px; /* Скругление углов */
-    cursor: pointer; /* Курсор при наведении */
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .news-actions .button:hover {
-    background-color: #777; /* Цвет кнопки при наведении */
+    background-color: #777;
 }

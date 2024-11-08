@@ -12,7 +12,7 @@
     <h2>Регистрация</h2>
     <form method="POST" action="{% url 'register' %}">
         {% csrf_token %}
-        {{ register_form.as_p }}  <!-- Отображение формы -->
+        {{ register_form.as_p }}
 
         <button type="submit">Зарегистрироваться</button>
     </form>

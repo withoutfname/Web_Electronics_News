@@ -1,4 +1,4 @@
-/* Основные стили для всего сайта */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -8,7 +8,7 @@ body {
     min-height: 100vh;
 }
 
-/* Хедэр */
+
 header {
     background-color: #333;
     color: #fff;
@@ -16,19 +16,19 @@ header {
     position: relative;
 }
 
-/* Navbar */
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Логотип */
+
 .logo {
     font-size: 24px;
 }
 
-/* Ссылки навигации */
+
 .nav-links {
     list-style: none;
     margin: 0;
@@ -38,7 +38,7 @@ header {
     justify-content: center;
 }
 
-/* Ссылки навигации */
+
 .nav-links li {
     margin-left: 20px;
 }
@@ -48,25 +48,25 @@ header {
     text-decoration: none;
 }
 
-/* Стили для активной ссылки */
+
 .nav-links li a.active {
-    background-color: #555; /* Цвет фона для активной ссылки */
+    background-color: #555;
     padding: 10px;
     border-radius: 5px;
 }
 
-/* Бургер-меню */
+
 .burger-menu {
     display: none;
     list-style: none;
     background-color: #333;
     position: absolute;
-    top: 100%; /* Поднимаем меню на 100% вниз от родителя */
-    right: 0; /* Привязываем к правой стороне */
+    top: 100%;
+    right: 0;
     margin: 0;
     padding: 10px;
-    width: 100%; /* Задаём ширину меню */
-    z-index: 1000; /* Убедитесь, что меню поверх остальных элементов */
+    width: 100%;
+    z-index: 1000;
     text-align: center;
 }
 
@@ -78,10 +78,10 @@ header {
 }
 
 .burger-menu.open {
-    display: block; /* Показываем меню при открытии */
+    display: block;
 }
 
-/* Контрастная кнопка */
+
 .contrast-icon-wrapper {
     display: flex;
     justify-content: center;
@@ -91,7 +91,7 @@ header {
     width: 30px;
     height: 30px;
     padding: 2px;
-    margin-right: 10px; /* Отступ справа от глаза */
+    margin-right: 10px;
 }
 
 #contrast-icon {
@@ -100,7 +100,7 @@ header {
     cursor: pointer;
 }
 
-/* Бургер-меню и иконка */
+
 .burger-menu-icon {
     display: none;
     cursor: pointer;
@@ -108,13 +108,13 @@ header {
     color: white;
 }
 
-/* Основной контент */
+
 main {
     flex-grow: 1;
     padding: 20px;
 }
 
-/* Футер */
+
 footer {
     background-color: #333;
     color: #fff;
@@ -123,29 +123,29 @@ footer {
     margin-top: auto;
 }
 
-/* Адаптация для больших экранов */
+
 @media (min-width: 601px) {
     .burger-menu {
-        display: none; /* Скрываем бургер-меню на больших экранах */
+        display: none;
     }
 
     .burger-menu-icon {
-        display: none; /* Скрываем бургер-меню на больших экранах */
+        display: none;
     }
 
     .contrast-icon-wrapper {
-        margin-left: auto; /* Обеспечиваем, чтобы иконка была справа */
+        margin-left: auto;
     }
 }
 
-/* Адаптация для маленьких экранов */
+
 @media (max-width: 600px) {
     .nav-links {
-        display: none; /* Скрываем навигацию */
+        display: none;
     }
 
     .burger-menu-icon {
-        display: block; /* Показываем бургер-меню */
+        display: block;
     }
 
     .navbar {
@@ -154,42 +154,42 @@ footer {
     }
 
     .contrast-icon-wrapper {
-        margin-left: auto; /* Сдвигаем иконку глаза максимально вправо */
+        margin-left: auto;
     }
 
     .burger-menu {
-        display: none; /* Скрываем бургер-меню по умолчанию */
+        display: none;
     }
 
     .burger-menu.open {
-        display: block; /* Показываем бургер-меню при открытии */
+        display: block;
     }
 }
 
 @media (min-width: 1920px) {
     body {
-        font-size: 18px; /* Увеличьте размер шрифта по вашему усмотрению */
+        font-size: 18px;
     }
 
     .logo {
-        font-size: 40px; /* Увеличение размера шрифта логотипа */
+        font-size: 40px;
     }
 
     .nav-links li a {
-        font-size: 28px; /* Увеличение размера шрифта ссылок навигации */
+        font-size: 28px;
     }
 
     #contrast-icon {
-        width: 32px; /* Увеличение размера иконки глаза */
-        height: 32px; /* Увеличение размера иконки глаза */
+        width: 32px;
+        height: 32px;
     }
 
     .contrast-icon-wrapper {
-        width: 40px;  /* Увеличьте ширину фона вокруг глаза */
-        height: 40px; /* Увеличьте высоту фона вокруг глаза */
+        width: 40px;
+        height: 40px;
     }
 
     footer {
-        padding: 30px; /* Увеличение отступов футера */
+        padding: 30px;
     }
 }

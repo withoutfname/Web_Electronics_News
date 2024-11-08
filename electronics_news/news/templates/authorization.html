@@ -12,7 +12,7 @@
     <h2>Вход</h2>
     <form method="POST" action="{% url 'authorise' %}">
         {% csrf_token %}
-        {{ auth_form.as_p }}  <!-- Отображение формы -->
+        {{ auth_form.as_p }}
         <button type="submit">Войти</button>
     </form>
     <div class="switch">

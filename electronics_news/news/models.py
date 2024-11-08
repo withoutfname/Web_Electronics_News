@@ -10,11 +10,11 @@ class UserProfile(AbstractUser):
     nickname = models.CharField(max_length=15, blank=False)
     birthdate = models.DateField(blank=False, null=False)
     avatar = models.ImageField(upload_to='user_avatars', default='user_avatars/default-avatar.png')
-    email = models.EmailField(unique=True)  # Используйте стандартное поле email
+    email = models.EmailField(unique=True)
 
     def clean(self):
-        super().clean()  # Вызов родительского метода clean
-        # Добавьте свои проверки здесь, если нужно
+        super().clean()
+
 
     def __str__(self):
         return self.username

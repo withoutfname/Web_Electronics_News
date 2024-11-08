@@ -19,7 +19,7 @@ def about(request):
     return render(request, "about.html")
 
 def index(request):
-    latest_news = Content.objects.order_by('-created_at')[:6]  # Отображаем последние 6 новостей/обзоров
+    latest_news = Content.objects.order_by('-created_at')[:6]
     return render(request, 'index.html', {'latest_news': latest_news})
 
 def news(request):
@@ -66,7 +66,7 @@ def edit_profile(request):
         edit_profile_form = EditProfileForm(request.POST, request.FILES, instance=request.user)
         if edit_profile_form.is_valid():
             edit_profile_form.save()
-            return redirect('profile')  # Перенаправление на страницу профиля
+            return redirect('profile')
     else:
         edit_profile_form = EditProfileForm(instance=request.user)
 
@@ -128,7 +128,6 @@ def edit_content(request, content_id):
     existing_videos = content.videos.all()
 
     available_slots = 5
-    # Рассчитываем оставшиеся слоты для новых изображений
     remaining_image_slots = available_slots - existing_images.count()
     remaining_video_slots = available_slots - existing_videos.count()
 
@@ -137,31 +136,31 @@ def edit_content(request, content_id):
 
 
     if request.method == 'POST':
-        # Обновление заголовка и описания
+
         content.title = request.POST.get('title')
         content.content = request.POST.get('content')
         content.save()
 
-        # Обработка удаления изображений
+
         for image in existing_images:
             if f'delete_image_{image.id}' in request.POST:
                 image.delete()
                 messages.success(request, f'Изображение {image.id} успешно удалено.')
 
-        # Обработка загрузки новых изображений
+
         if 'images' in request.FILES:
             for file in request.FILES.getlist('images'):
                 if remaining_image_slots > 0:
                     ContentImage.objects.create(content=content, image=file)
                     remaining_image_slots -= 1
 
-        # Обработка удаления видео
+
         for video in existing_videos:
             if f'delete_video_{video.id}' in request.POST:
                 video.delete()
                 messages.success(request, f'Видео {video.id} успешно удалено.')
 
-        # Обработка загрузки новых видео
+
         if 'videos' in request.FILES:
             for file in request.FILES.getlist('videos'):
                 ContentVideo.objects.create(content=content, video=file)
@@ -177,22 +176,17 @@ def edit_content(request, content_id):
         'available_video_slots': available_video_slots,
     })
 
-
-
-
-
 @login_required
 def delete_image(request, image_id):
     image = get_object_or_404(ContentImage, id=image_id)
-    # Добавьте логику удаления файла и записи, если требуется
     image.delete()
-    return redirect('название_страницы_или_url_название')
+    return redirect('edit_content')
 
 @login_required
 def delete_video(request, video_id):
     video = get_object_or_404(ContentVideo, id=video_id)
     video.delete()
-    return redirect('название_страницы_или_url_название')
+    return redirect('edit_content')
 
 @login_required
 def delete_content(request, content_id):
@@ -210,7 +204,7 @@ def delete_media(request, media_id, media_type):
     elif media_type == 'video':
         media = get_object_or_404(ContentVideo, id=media_id)
     else:
-        return redirect('profile')  # или любой другой подходящий URL
+        return redirect('profile')
 
     if request.method == 'POST':
         media.delete()
@@ -221,11 +215,8 @@ def delete_media(request, media_id, media_type):
 
 
 def news_reviews(request):
-    # Фильтрация новостей и обзоров
     news_list = Content.objects.filter(type='news').order_by('-created_at')
     review_list = Content.objects.filter(type='review').order_by('-created_at')
-
-    # Передача данных в шаблон
     context = {
         'news_list': news_list,
         'review_list': review_list,

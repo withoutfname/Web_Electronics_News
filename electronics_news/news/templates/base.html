@@ -25,7 +25,7 @@
                 <img id="contrast-icon" src="{% static 'images/eye.svg' %}" alt="Contrast Icon">
             </div>
             <div class="burger-menu-icon" onclick="toggleBurgerMenu()">
-                &#9776; <!-- Бургер-меню -->
+                &#9776;
             </div>
             <ul class="burger-menu">
                 <li><a href="{% url 'index' %}">Главная</a></li>
@@ -71,7 +71,7 @@
             }
         }
 
-        // Для установки активной ссылки
+
         const navLinks = document.querySelectorAll('.nav-links li a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
