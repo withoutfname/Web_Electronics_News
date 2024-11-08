@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/electronics_news/media/user_avatars/default-avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/edit_profile.html" afterDir="false" />
+    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="комменты">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/electronics_news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/electronics_news/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/about.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/about.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/views.py" afterDir="false" />
     </list>
@@ -55,13 +51,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/emilm/PycharmProjects/Web_Electronics_News/electronics_news/media/user_avatars"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.views.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/emilm/PycharmProjects/Web_Electronics_News&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\emilm\PycharmProjects\Web_Electronics_News\electronics_news\media\user_avatars" />
@@ -91,6 +88,94 @@
       <option name="presentableId" value="Default" />
       <updated>1729653215620</updated>
     </task>
+    <task id="LOCAL-00001" summary="add and edit profile">
+      <option name="closed" value="true" />
+      <created>1729921415576</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729921415576</updated>
+    </task>
+    <task id="LOCAL-00002" summary="create content">
+      <option name="closed" value="true" />
+      <created>1730095703292</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730095703292</updated>
+    </task>
+    <task id="LOCAL-00003" summary="content view bad design">
+      <option name="closed" value="true" />
+      <created>1730112689284</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730112689284</updated>
+    </task>
+    <task id="LOCAL-00004" summary="content view good design">
+      <option name="closed" value="true" />
+      <created>1730122839354</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730122839354</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add content delete and edit">
+      <option name="closed" value="true" />
+      <created>1730182552139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730182552139</updated>
+    </task>
+    <task id="LOCAL-00006" summary="finish content edit">
+      <option name="closed" value="true" />
+      <created>1730468800984</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730468800984</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add news page, change styles,">
+      <option name="closed" value="true" />
+      <created>1730800207843</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730800207843</updated>
+    </task>
+    <task id="LOCAL-00008" summary="комменты">
+      <option name="closed" value="true" />
+      <created>1731035929035</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731035929035</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="add and edit profile" />
+    <MESSAGE value="create content" />
+    <MESSAGE value="content view bad design" />
+    <MESSAGE value="content view good design" />
+    <MESSAGE value="add content delete and edit" />
+    <MESSAGE value="finish content edit" />
+    <MESSAGE value="add news page, change styles," />
+    <MESSAGE value="комменты" />
+    <option name="LAST_COMMIT_MESSAGE" value="комменты" />
   </component>
 </project>

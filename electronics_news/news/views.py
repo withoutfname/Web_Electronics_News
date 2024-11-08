@@ -222,3 +222,6 @@ def news_reviews(request):
         'review_list': review_list,
     }
     return render(request, 'news.html', context)
+
+def password_reset(request):
+    return render(request, 'password_reset.html')
