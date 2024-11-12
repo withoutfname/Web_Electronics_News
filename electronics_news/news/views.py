@@ -234,3 +234,35 @@ def news_reviews(request):
 
 def password_reset(request):
     return render(request, 'password_reset.html')
+
+
+def news_reviews_api(request):
+    # Получаем параметры из URL
+    content_type = request.GET.get('type')  # Тип контента ('news' или 'review')
+    page_number = request.GET.get('page', 1)  # Номер страницы (по умолчанию 1)
+    per_page = 5  # Количество элементов на странице
+
+    if content_type == 'news':
+        content_queryset = Content.objects.filter(type='news').order_by('-created_at')
+    else:
+        content_queryset = Content.objects.filter(type='review').order_by('-created_at')
+
+    paginator = Paginator(content_queryset, per_page)
+    page_obj = paginator.get_page(page_number)
+
+    data = {
+        'results': [
+            {
+                'id': content.id,
+                'title': content.title,
+                'author': content.author.username,
+                'created_at': content.created_at.strftime('%d.%m.%Y'),
+                'content': content.content[:100]  # Обрезаем для превью
+            } for content in page_obj
+        ],
+        'has_next': page_obj.has_next(),
+        'current_page': page_obj.number,
+        'total_pages': paginator.num_pages,
+    }
+
+    return JsonResponse(data)
