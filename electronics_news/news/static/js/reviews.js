@@ -25,6 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.loading = false;
                 }
             },
+            formatDateTime(dateString) {
+                const options = {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+
+                };
+                return new Intl.DateTimeFormat('ru-RU', options).format(new Date(dateString));
+            },
             truncateWords(text, length) {
                 return text.length > length ? text.slice(0, length) + '...' : text;
             },
@@ -48,9 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div v-for="review in reviews" :key="review.id" class="news-card">
                     <h3>{{ review.title }}</h3>
                     <p class="review-meta">
-                        Автор: {{ review.author__nickname }} | Дата: {{ review.created_at }}
+                        Автор: {{ review.author__nickname }} | Дата: {{ formatDateTime(review.created_at) }}
                     </p>
-                    <p>{{ truncateWords(review.content, 20) }}</p>
+                    <p>{{ truncateWords(review.content, 140) }}</p>
                     <a :href="'/content_detail/' + review.id">Читать далее</a>
                 </div>
             </div>
