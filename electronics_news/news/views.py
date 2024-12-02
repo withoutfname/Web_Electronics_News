@@ -73,6 +73,10 @@ def edit_profile(request):
 
 @login_required
 def publish_content(request):
+    if not request.user.can_publish_content:
+        messages.error(request, "У вас нет прав на публикацию контента.")
+        return redirect('profile')
+
     if request.method == 'POST':
         content_form = ContentForm(request.POST)
         image_formset = ContentImageFormSet(request.POST, request.FILES)
@@ -95,6 +99,7 @@ def publish_content(request):
                     video.content = content
                     video.save()
 
+            messages.success(request, "Контент успешно опубликован.")
             return redirect('profile')
     else:
         content_form = ContentForm()

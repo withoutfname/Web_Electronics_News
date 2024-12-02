@@ -11,6 +11,7 @@ class UserProfile(AbstractUser):
     birthdate = models.DateField(blank=False, null=False)
     avatar = models.ImageField(upload_to='user_avatars', default='user_avatars/default-avatar.png')
     email = models.EmailField(unique=True)
+    can_publish_content = models.BooleanField(default=True, verbose_name='Может публиковать контент')
 
     def clean(self):
         super().clean()
