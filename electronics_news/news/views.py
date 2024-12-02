@@ -1,6 +1,7 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.views.generic import DetailView
@@ -211,7 +212,7 @@ def delete_media(request, media_id, media_type):
 
     return render(request, 'confirm_delete_media.html', {'media': media, 'media_type': media_type})
 
-
+'''
 def news_reviews(request):
 
     news_list = Content.objects.filter(type='news').order_by('-created_at')
@@ -231,38 +232,34 @@ def news_reviews(request):
         'review_page_obj': review_page_obj,
     }
     return render(request, 'news.html', context)
-
+'''
 def password_reset(request):
     return render(request, 'password_reset.html')
 
 
-def news_reviews_api(request):
-    # Получаем параметры из URL
-    content_type = request.GET.get('type')  # Тип контента ('news' или 'review')
-    page_number = request.GET.get('page', 1)  # Номер страницы (по умолчанию 1)
-    per_page = 5  # Количество элементов на странице
+# View для страницы новостей и обзоров
+def news_reviews(request):
+    # Пагинация для новостей
+    news_list = Content.objects.filter(type='news').order_by('-created_at')
+    news_paginator = Paginator(news_list, 5)
+    news_page_number = request.GET.get('news_page')
+    news_page_obj = news_paginator.get_page(news_page_number)
 
-    if content_type == 'news':
-        content_queryset = Content.objects.filter(type='news').order_by('-created_at')
-    else:
-        content_queryset = Content.objects.filter(type='review').order_by('-created_at')
+    context = {
+        'news_page_obj': news_page_obj,
 
-    paginator = Paginator(content_queryset, per_page)
-    page_obj = paginator.get_page(page_number)
+    }
+    return render(request, 'news.html', context)
+
+# API для обзоров
+def review_list_api(request):
+    page = request.GET.get('page', 1)
+    reviews = Content.objects.filter(type='review').order_by('-created_at')
+    paginator = Paginator(reviews, 2)  # 2 обзора на страницу
+    page_obj = paginator.get_page(page)
 
     data = {
-        'results': [
-            {
-                'id': content.id,
-                'title': content.title,
-                'author': content.author.username,
-                'created_at': content.created_at.strftime('%d.%m.%Y'),
-                'content': content.content[:100]  # Обрезаем для превью
-            } for content in page_obj
-        ],
+        'reviews': list(page_obj.object_list.values('id', 'title', 'content', 'created_at', 'author__username', 'author__nickname')),
         'has_next': page_obj.has_next(),
-        'current_page': page_obj.number,
-        'total_pages': paginator.num_pages,
     }
-
     return JsonResponse(data)

@@ -2,8 +2,9 @@
 
 {% block title %}Новости и Обзоры{% endblock %}
 {% load static %}
+
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -11,59 +12,44 @@
     <h2>Новости</h2>
     <div class="news-section">
         {% for news in news_page_obj %}
-            <div class="news-card">
-                <h3>{{ news.title }}</h3>
-                <p class="news-meta">
-                    Автор: {{ news.author.username }} | Дата: {{ news.created_at|date:"d.m.Y" }}
-                </p>
-                <p>{{ news.content|truncatewords:20 }}</p>
-                <a href="{% url 'content_detail' news.id %}">Читать далее</a>
-            </div>
+        <div class="news-card">
+            <h3>{{ news.title }}</h3>
+            <p class="news-meta">
+                Автор: {{ news.author.username }} | Дата: {{ news.created_at|date:"d.m.Y" }}
+            </p>
+            <p>{{ news.content|truncatewords:20 }}</p>
+            <a href="{% url 'content_detail' news.id %}">Читать далее</a>
+        </div>
         {% empty %}
-            <p>Нет новостей для отображения.</p>
+        <p>Нет новостей для отображения.</p>
         {% endfor %}
     </div>
 
-
     <div class="pagination">
         {% if news_page_obj.has_previous %}
-            <a href="?news_page={{ news_page_obj.previous_page_number }}">&laquo; Предыдущая</a>
+        <a href="?news_page={{ news_page_obj.previous_page_number }}">&laquo; Предыдущая</a>
         {% endif %}
-
-        <span>Страница {{ news_page_obj.number }} из {{ news_page_obj.paginator.num_pages }}</span>
-
+        <!-- Кнопки для страниц -->
+        {% for page_num in news_page_obj.paginator.page_range %}
+        {% if page_num == news_page_obj.number %}
+        <span class="current">{{ page_num }}</span> <!-- Текущая страница -->
+        {% elif page_num > news_page_obj.number|add:'-3' and page_num < news_page_obj.number|add:'3' %}
+        <a href="?news_page={{ page_num }}">{{ page_num }}</a> <!-- Ближайшие страницы -->
+        {% endif %}
+        {% endfor %}
         {% if news_page_obj.has_next %}
-            <a href="?news_page={{ news_page_obj.next_page_number }}">Следующая &raquo;</a>
+        <a href="?news_page={{ news_page_obj.next_page_number }}">Следующая &raquo;</a>
         {% endif %}
     </div>
 
     <h2>Обзоры</h2>
-    <div class="review-section">
-        {% for review in review_page_obj %}
-            <div class="news-card">
-                <h3>{{ review.title }}</h3>
-                <p class="news-meta">
-                    Автор: {{ review.author.username }} | Дата: {{ review.created_at|date:"d.m.Y" }}
-                </p>
-                <p>{{ review.content|truncatewords:20 }}</p>
-                <a href="{% url 'content_detail' review.id %}">Читать далее</a>
-            </div>
-        {% empty %}
-            <p>Нет обзоров для отображения.</p>
-        {% endfor %}
-    </div>
-
-
-    <div class="pagination">
-        {% if review_page_obj.has_previous %}
-            <a href="?review_page={{ review_page_obj.previous_page_number }}">&laquo; Предыдущая</a>
-        {% endif %}
-
-        <span>Страница {{ review_page_obj.number }} из {{ review_page_obj.paginator.num_pages }}</span>
-
-        {% if review_page_obj.has_next %}
-            <a href="?review_page={{ review_page_obj.next_page_number }}">Следующая &raquo;</a>
-        {% endif %}
+    <div id="review-section">
+        <!-- Vue.js автоматически смонтирует обзоры сюда -->
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="{% static 'js/reviews.js' %}"></script>
 {% endblock %}
