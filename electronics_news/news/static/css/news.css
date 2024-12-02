@@ -1,4 +1,5 @@
 
+
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -18,7 +19,9 @@
 .news-card h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
+    color: #222; /* Убедитесь, что цвет заголовка контрастирует с фоном */
 }
+
 
 .news-card .news-meta {
     font-size: 0.9em;

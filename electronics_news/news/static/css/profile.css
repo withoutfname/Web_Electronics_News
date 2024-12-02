@@ -17,6 +17,14 @@
     display: none;
 }
 
+.released-news-section h3 {
+    font-size: 1.5rem;
+    color: #333; /* Достаточно контрастный цвет */
+    margin-bottom: 10px;
+}
+
+
+
 
 .avatar {
     width: 140px;
