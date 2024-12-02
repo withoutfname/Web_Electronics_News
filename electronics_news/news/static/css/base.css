@@ -2,7 +2,6 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -113,6 +112,41 @@ main {
     flex-grow: 1;
     padding: 20px;
 }
+
+/* Стандартные стили */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Высокая контрастность */
+body.high-contrast {
+    background-color: #000; /* Черный фон */
+    color: #fff; /* Белый текст по умолчанию */
+}
+
+body.high-contrast a {
+    color: #1e90ff; /* Светло-голубой для ссылок, чтобы они хорошо выделялись */
+}
+
+body.high-contrast .nav-links li a.active {
+    background-color: #444; /* Темно-серый для активной ссылки */
+}
+
+body.high-contrast header,
+body.high-contrast footer {
+    background-color: #111;
+}
+
+body.high-contrast .button {
+    background-color: #555;
+    color: #fff;
+}
+
+body.high-contrast .button:hover {
+    background-color: #777;
+}
+
 
 
 footer {

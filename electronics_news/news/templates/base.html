@@ -62,14 +62,29 @@
             burgerMenu.classList.toggle('open');
         }
 
-        function toggleContrastIcon() {
+         function toggleContrastIcon() {
             const icon = document.getElementById('contrast-icon');
-            if (icon.src.includes('eye.svg')) {
-                icon.src = '{% static "images/eye-crossed.svg" %}';
-            } else {
+            const body = document.body;
+
+            if (body.classList.contains('high-contrast')) {
+                body.classList.remove('high-contrast');
                 icon.src = '{% static "images/eye.svg" %}';
+                localStorage.setItem('contrastMode', 'normal');
+            } else {
+                body.classList.add('high-contrast');
+                icon.src = '{% static "images/eye-crossed.svg" %}';
+                localStorage.setItem('contrastMode', 'high');
             }
         }
+
+        // Проверка и применение режима контрастности из локального хранилища
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedMode = localStorage.getItem('contrastMode');
+            if (savedMode === 'high') {
+                document.body.classList.add('high-contrast');
+                document.getElementById('contrast-icon').src = '{% static "images/eye-crossed.svg" %}';
+            }
+
 
 
         const navLinks = document.querySelectorAll('.nav-links li a');
@@ -79,6 +94,8 @@
                 link.classList.add('active');
             });
         });
+
+    });
     </script>
     {% block extra_js %}{% endblock %}
 </body>
