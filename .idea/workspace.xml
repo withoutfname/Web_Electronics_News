@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="продвинутый contrast">
+    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="contrast выключен">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/publish_content.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/publish_content.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/password_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/password_reset.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733147946718</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="contrast выключен">
+      <option name="closed" value="true" />
+      <created>1733205320806</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1733205320806</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,6 +252,7 @@
     <MESSAGE value="admin publish content" />
     <MESSAGE value="base contrast" />
     <MESSAGE value="продвинутый contrast" />
-    <option name="LAST_COMMIT_MESSAGE" value="продвинутый contrast" />
+    <MESSAGE value="contrast выключен" />
+    <option name="LAST_COMMIT_MESSAGE" value="contrast выключен" />
   </component>
 </project>
