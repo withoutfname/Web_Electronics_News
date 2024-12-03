@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="комменты">
+    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="продвинутый contrast">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/about.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/about.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/publish_content.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/publish_content.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +150,71 @@
       <option name="project" value="LOCAL" />
       <updated>1731035929035</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="комменты доработка">
+      <option name="closed" value="true" />
+      <created>1731039191078</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1731039191078</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add pagination">
+      <option name="closed" value="true" />
+      <created>1731044317403</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1731044317403</updated>
+    </task>
+    <task id="LOCAL-00011" summary="before react">
+      <option name="closed" value="true" />
+      <created>1731386684254</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1731386684254</updated>
+    </task>
+    <task id="LOCAL-00012" summary="vue pagination">
+      <option name="closed" value="true" />
+      <created>1733135884277</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733135884277</updated>
+    </task>
+    <task id="LOCAL-00013" summary="vue full pagination">
+      <option name="closed" value="true" />
+      <created>1733136222270</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733136222270</updated>
+    </task>
+    <task id="LOCAL-00014" summary="admin publish content">
+      <option name="closed" value="true" />
+      <created>1733137041373</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733137041373</updated>
+    </task>
+    <task id="LOCAL-00015" summary="base contrast">
+      <option name="closed" value="true" />
+      <created>1733146434091</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1733146434091</updated>
+    </task>
+    <task id="LOCAL-00016" summary="продвинутый contrast">
+      <option name="closed" value="true" />
+      <created>1733147946718</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1733147946718</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,6 +238,14 @@
     <MESSAGE value="finish content edit" />
     <MESSAGE value="add news page, change styles," />
     <MESSAGE value="комменты" />
-    <option name="LAST_COMMIT_MESSAGE" value="комменты" />
+    <MESSAGE value="комменты доработка" />
+    <MESSAGE value="add pagination" />
+    <MESSAGE value="before react" />
+    <MESSAGE value="vue pagination" />
+    <MESSAGE value="vue full pagination" />
+    <MESSAGE value="admin publish content" />
+    <MESSAGE value="base contrast" />
+    <MESSAGE value="продвинутый contrast" />
+    <option name="LAST_COMMIT_MESSAGE" value="продвинутый contrast" />
   </component>
 </project>

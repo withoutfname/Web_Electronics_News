@@ -17,6 +17,31 @@
     display: none;
 }
 
+form label {
+    color: #333; /* Темный текст для стандартного фона */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form .current-avatar {
+    color: #333; /* Текст будет видимым */
+    margin-bottom: 10px;
+}
+
+form input[type="file"] {
+    background-color: #fff;
+    color: #333; /* Цвет текста ввода файла */
+}
+
+.profile-container p,
+.profile-container label {
+    color: #333;
+
+}
+
+
+
 .released-news-section h3 {
     font-size: 1.5rem;
     color: #333; /* Достаточно контрастный цвет */
