@@ -31,7 +31,7 @@ form .current-avatar {
 
 form input[type="file"] {
     background-color: #fff;
-    color: #333; /* Цвет текста ввода файла */
+    color: #333;
 }
 
 .profile-container p,
@@ -44,7 +44,7 @@ form input[type="file"] {
 
 .released-news-section h3 {
     font-size: 1.5rem;
-    color: #333; /* Достаточно контрастный цвет */
+    color: #333;
     margin-bottom: 10px;
 }
 

@@ -217,34 +217,13 @@ def delete_media(request, media_id, media_type):
 
     return render(request, 'confirm_delete_media.html', {'media': media, 'media_type': media_type})
 
-'''
-def news_reviews(request):
-
-    news_list = Content.objects.filter(type='news').order_by('-created_at')
-    review_list = Content.objects.filter(type='review').order_by('-created_at')
-
-    news_paginator = Paginator(news_list, 5)
-    review_paginator = Paginator(review_list, 5)
-
-    news_page_number = request.GET.get('news_page')
-    review_page_number = request.GET.get('review_page')
-
-    news_page_obj = news_paginator.get_page(news_page_number)
-    review_page_obj = review_paginator.get_page(review_page_number)
-
-    context = {
-        'news_page_obj': news_page_obj,
-        'review_page_obj': review_page_obj,
-    }
-    return render(request, 'news.html', context)
-'''
 def password_reset(request):
     return render(request, 'password_reset.html')
 
 
-# View для страницы новостей и обзоров
+
 def news_reviews(request):
-    # Пагинация для новостей
+
     news_list = Content.objects.filter(type='news').order_by('-created_at')
     news_paginator = Paginator(news_list, 5)
     news_page_number = request.GET.get('news_page')
@@ -256,11 +235,11 @@ def news_reviews(request):
     }
     return render(request, 'news.html', context)
 
-# API для обзоров
+
 def review_list_api(request):
     page = request.GET.get('page', 1)
     reviews = Content.objects.filter(type='review').order_by('-created_at')
-    paginator = Paginator(reviews, 2)  # 2 обзора на страницу
+    paginator = Paginator(reviews, 2)
     page_obj = paginator.get_page(page)
 
     data = {

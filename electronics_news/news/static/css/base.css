@@ -113,24 +113,24 @@ main {
     padding: 20px;
 }
 
-/* Стандартные стили */
+
 body {
     background-color: #f9f9f9;
     color: #333;
 }
 
-/* Высокая контрастность */
+
 body.high-contrast {
-    background-color: #000; /* Черный фон */
-    color: #fff; /* Белый текст по умолчанию */
+    background-color: #000;
+    color: #fff;
 }
 
 body.high-contrast a {
-    color: #1e90ff; /* Светло-голубой для ссылок, чтобы они хорошо выделялись */
+    color: #1e90ff;
 }
 
 body.high-contrast .nav-links li a.active {
-    background-color: #444; /* Темно-серый для активной ссылки */
+    background-color: #444;
 }
 
 body.high-contrast header,

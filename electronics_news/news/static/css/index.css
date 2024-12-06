@@ -7,21 +7,21 @@
 .banner {
     text-align: center;
     padding: 40px;
-    background-color: #f8f9fa; /* Светло-серый фон */
+    background-color: #f8f9fa;
     border-radius: 8px;
     margin-bottom: 20px;
-    color: #333; /* Темный текст */
+    color: #333;
 }
 
 .banner h1 {
-    font-size: 2.5em; /* Размер заголовка */
+    font-size: 2.5em;
     margin: 0 0 10px 0;
-    color: #222; /* Темный цвет для заголовка */
+    color: #222;
 }
 
 .banner p {
     font-size: 1.2em;
-    color: #555; /* Средне-серый для описания */
+    color: #555;
 }
 
 
@@ -42,22 +42,22 @@
     padding: 20px;
     flex: 1 1 300px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    color: #333; /* Основной текст */
+    color: #333;
 }
 
 .content-card h3 {
     margin-top: 0;
     font-size: 1.5em;
-    color: #222; /* Цвет заголовка */
+    color: #222;
 }
 
 .content-card p {
     margin: 10px 0;
-    color: #555; /* Описание */
+    color: #555;
 }
 
 .content-card a {
-    color: #007bff; /* Синий для ссылок */
+    color: #007bff;
     text-decoration: none;
 }
 

@@ -2,7 +2,6 @@ from django.urls import path
 from . import views
 from django.contrib.auth.views import LogoutView
 from .views import ContentDetailView
-from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [

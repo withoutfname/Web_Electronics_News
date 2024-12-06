@@ -1,13 +1,9 @@
-from enum import unique
-
-from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import inlineformset_factory
-from .models import UserProfile, Content, ContentImage, ContentVideo
+from .models import UserProfile
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import DetailView
 from django import forms
-from django.forms import modelformset_factory
 from .models import Content, ContentImage, ContentVideo
 
 class RegistrationForm(UserCreationForm):

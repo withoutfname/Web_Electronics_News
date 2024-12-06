@@ -29,12 +29,12 @@
         {% if news_page_obj.has_previous %}
         <a href="?news_page={{ news_page_obj.previous_page_number }}">&laquo; Предыдущая</a>
         {% endif %}
-        <!-- Кнопки для страниц -->
+
         {% for page_num in news_page_obj.paginator.page_range %}
         {% if page_num == news_page_obj.number %}
-        <span class="current">{{ page_num }}</span> <!-- Текущая страница -->
+        <span class="current">{{ page_num }}</span>
         {% elif page_num > news_page_obj.number|add:'-3' and page_num < news_page_obj.number|add:'3' %}
-        <a href="?news_page={{ page_num }}">{{ page_num }}</a> <!-- Ближайшие страницы -->
+        <a href="?news_page={{ page_num }}">{{ page_num }}</a>
         {% endif %}
         {% endfor %}
         {% if news_page_obj.has_next %}
@@ -44,7 +44,7 @@
 
     <h2>Обзоры</h2>
     <div id="review-section">
-        <!-- Vue.js автоматически смонтирует обзоры сюда -->
+
     </div>
 </div>
 {% endblock %}

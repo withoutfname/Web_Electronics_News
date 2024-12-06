@@ -1,4 +1,4 @@
-/* Контейнер формы */
+
 .auth-container {
     max-width: 400px;
     margin: 0 auto;
@@ -13,23 +13,23 @@
     justify-content: center;
 }
 
-/* Заголовки */
+
 .auth-container h2 {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
-    color: #333; /* Видимый цвет текста */
+    color: #333;
 }
 
-/* Метки формы */
+
 form label {
-    color: #333; /* Контрастный цвет меток */
+    color: #333;
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
 }
 
-/* Поля ввода */
+
 .auth-form input,
 .register-form input,
 .password-reset-form input {
@@ -39,11 +39,11 @@ form label {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #fff; /* Явный фон для полей */
-    color: #333; /* Темный цвет текста в полях */
+    background-color: #fff;
+    color: #333;
 }
 
-/* Кнопки */
+
 button[type="submit"] {
     width: 100%;
     padding: 12px;
@@ -60,7 +60,7 @@ button[type="submit"]:hover {
     background-color: #777;
 }
 
-/* Ссылка на переключение между регистрацией и входом */
+
 .switch p {
     color: #555;
 }
@@ -74,7 +74,6 @@ button[type="submit"]:hover {
     text-decoration: underline;
 }
 
-/* Адаптивность для больших экранов */
 @media (min-width: 1920px) {
     .auth-container h2 {
         font-size: 44px;
