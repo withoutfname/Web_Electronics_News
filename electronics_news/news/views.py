@@ -1,6 +1,9 @@
+from lib2to3.fixes.fix_input import context
+
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.db.models import Count
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
@@ -221,19 +224,38 @@ def password_reset(request):
     return render(request, 'password_reset.html')
 
 
-
 def news_reviews(request):
 
+    search_query = request.GET.get('search', '')
+
+
     news_list = Content.objects.filter(type='news').order_by('-created_at')
+    if search_query:
+        news_list = news_list.filter(
+            content__icontains=search_query
+        ) | news_list.filter(
+            title__icontains=search_query
+        )
+
+
     news_paginator = Paginator(news_list, 5)
     news_page_number = request.GET.get('news_page')
     news_page_obj = news_paginator.get_page(news_page_number)
 
     context = {
         'news_page_obj': news_page_obj,
-
+        'search': search_query,
     }
+
     return render(request, 'news.html', context)
+
+def reviews(request):
+    reviews = Content.objects.filter(type='review').order_by('-created_at')
+    paginator = Paginator(reviews, 5)
+    page_number = request.GET.get('page')
+    reviews_page_obj = paginator.get_page(page_number)
+    return render(request, 'reviews.html', {'reviews_page_obj': reviews_page_obj})
+
 
 
 def review_list_api(request):
@@ -247,3 +269,21 @@ def review_list_api(request):
         'has_next': page_obj.has_next(),
     }
     return JsonResponse(data)
+
+def community(request):
+
+    users = UserProfile.objects.annotate(content_count = Count('content'))
+    context = {
+        'users' : users,
+    }
+
+    return render(request, 'community.html', context)
+
+def user_detail(request, user_id):
+
+    user = get_object_or_404(UserProfile, id=user_id)
+    context = {
+        "user" : user
+    }
+
+    return render(request, "user_detail.html", context)

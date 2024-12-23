@@ -15,10 +15,20 @@
             <ul class="nav-links">
                 <li><a href="{% url 'index' %}" class="{% if request.path == '/' %}active{% endif %}">Главная</a></li>
                 <li><a href="{% url 'news' %}" class="{% if request.path == '/news/' %}active{% endif %}">Новости</a></li>
-                {% if user.is_authenticated %}    <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile/' %}active{% endif %}">Профиль</a></li>
-{% else %}    <li><a href="{% url 'authorise' %}"
-            class="{% if request.path == '/authorise/' or request.path == '/register/' or request.path == '/password_reset/' %} active{% endif %}">        Вход/регистрация</a></li>
-{% endif %}
+                <li><a href="{% url 'reviews' %}" class="{% if request.path == '/reviews/' %}active{% endif %}">Обзоры</a></li>
+
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile/' %}active{% endif %}">Профиль</a></li>
+                    {% else %}
+                <li><a href="{% url 'authorise' %}" class="{% if request.path == '/authorise/' or request.path == '/register/' or request.path == '/password_reset/' %} active{% endif %}">        Вход/регистрация</a></li>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'community' %}" class="{%if request.resolver_match.url_name in 'community user_detail' %}active{% endif %}">Сообщество</a></li>
+                {% else %}
+                {% endif %}
+
+
                 <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">О нас</a></li>
             </ul>
             <div class="contrast-icon-wrapper" onclick="toggleContrastIcon()">
@@ -30,6 +40,8 @@
             <ul class="burger-menu">
                 <li><a href="{% url 'index' %}">Главная</a></li>
                 <li><a href="{% url 'news' %}">Новости</a></li>
+                <li><a href="{% url 'reviews' %}">Обзоры</a></li>
+
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}">Профиль</a></li>
                 {% else %}
@@ -43,7 +55,7 @@
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -87,13 +99,7 @@
 
 
 
-        const navLinks = document.querySelectorAll('.nav-links li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-            });
-        });
+
 
     });
     </script>

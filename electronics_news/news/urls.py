@@ -9,6 +9,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('profile/', views.profile, name='profile'),
     path('news/', views.news_reviews, name='news'),
+    path('reviews/', views.reviews, name='reviews'),
     path('authorise/', views.authorise, name='authorise'),
     path('register/', views.register, name='register'),
     path('password_reset/', views.password_reset, name='password_reset'),
@@ -21,5 +22,7 @@ urlpatterns = [
     path('delete_image/<int:image_id>/', views.delete_image, name='delete_image'),
     path('delete_video/<int:video_id>/', views.delete_video, name='delete_video'),
     path('api/reviews/', views.review_list_api, name='review_list_api'),
+    path('community/', views.community, name = 'community'),
+    path('community/<int:user_id>/', views.user_detail, name='user_detail')
 
 ]
