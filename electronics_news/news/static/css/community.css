@@ -2,14 +2,54 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    text-align: center;
 }
 
+/* Секция для заголовка и формы */
+.search-section {
+    margin-bottom: 20px;
+    text-align: left; /* Заголовок и форма слева */
+}
+
+.search-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.search-section form {
+    display: flex;
+    gap: 10px;
+    align-items: center; /* Выравнивание поля и кнопки */
+}
+
+.search-section input[type="text"] {
+    flex: 1; /* Поле растягивается */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-section button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-section button:hover {
+    background-color: #0056b3;
+}
+
+/* Карточки пользователей */
 .user-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start; /* Карточки выравниваются слева */
+    margin-top: 20px;
 }
 
 .user-card {
@@ -17,8 +57,8 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    padding: 15px;
+    width: calc(30% - 20px); /* Уменьшенная ширина для 3 карточек в строке */
+    padding: 10px; /* Меньше внутреннего отступа */
     text-align: center;
     transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -29,13 +69,12 @@
 }
 
 .avatar-container {
-    margin-bottom: 15px;
-
+    margin-bottom: 10px; /* Уменьшенный отступ под аватаром */
 }
 
 .user-avatar {
-    width: 100px;
-    height: 100px;
+    width: 80px; /* Уменьшенный размер аватара */
+    height: 80px;
     border-radius: 50%;
     border: 3px solid #007bff;
 }
@@ -45,13 +84,19 @@
 }
 
 .user-nickname {
-    font-size: 18px;
+    font-size: 16px; /* Уменьшенный размер шрифта */
     font-weight: bold;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .user-content-count {
-    font-size: 14px;
+    font-size: 12px; /* Уменьшенный размер текста */
     color: #555;
+}
+
+@media (max-width: 600px) {
+    .user-card {
+        width: 100%; /* Одна карточка в ряд на мобильных устройствах */
+    }
 }

@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="чистка комментов">
-      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/css/community.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/community.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/reviews.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/electronics_news/news/templates/user_detail.html" afterDir="false" />
+    <list default="true" id="d51cbb7c-2445-47d4-ac7f-eb2eb6d1e38c" name="Changes" comment="feat(urls, views, community.html, user_detail.html: add community system">
+      <change afterPath="$PROJECT_DIR$/electronics_news/news/static/css/user_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/css/community.css" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/css/community.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/static/js/reviews.js" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/static/js/reviews.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/community.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/community.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/news.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electronics_news/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/reviews.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electronics_news/news/templates/user_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/templates/user_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electronics_news/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/electronics_news/news/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -244,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733468036997</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat(urls, views, community.html, user_detail.html: add community system">
+      <option name="closed" value="true" />
+      <created>1734945376713</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1734945376713</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -279,6 +287,7 @@
     <MESSAGE value="contrast выключен" />
     <MESSAGE value="восстановление пароля" />
     <MESSAGE value="чистка комментов" />
-    <option name="LAST_COMMIT_MESSAGE" value="чистка комментов" />
+    <MESSAGE value="feat(urls, views, community.html, user_detail.html: add community system" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(urls, views, community.html, user_detail.html: add community system" />
   </component>
 </project>

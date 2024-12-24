@@ -3,7 +3,7 @@ from lib2to3.fixes.fix_input import context
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
@@ -265,25 +265,25 @@ def review_list_api(request):
     page_obj = paginator.get_page(page)
 
     data = {
-        'reviews': list(page_obj.object_list.values('id', 'title', 'content', 'created_at', 'author__username', 'author__nickname')),
+        'reviews': list(page_obj.object_list.values('id', 'title', 'content', 'created_at', 'author__username', 'author__nickname', 'author__id')),
         'has_next': page_obj.has_next(),
     }
     return JsonResponse(data)
 
 def community(request):
+    search_query = request.GET.get('search', '').strip()
 
     users = UserProfile.objects.annotate(content_count = Count('content'))
+    if search_query:
+        users = users.filter(Q(nickname__icontains=search_query))
     context = {
         'users' : users,
     }
-
     return render(request, 'community.html', context)
 
 def user_detail(request, user_id):
-
     user = get_object_or_404(UserProfile, id=user_id)
     context = {
         "user" : user
     }
-
     return render(request, "user_detail.html", context)

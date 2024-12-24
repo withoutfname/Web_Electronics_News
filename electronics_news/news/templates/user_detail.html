@@ -2,6 +2,19 @@
 
 {% block title %}Профиль пользователя{% endblock %}
 
-{% block extra_css %} {%endblock%}
+{% load static %}
 
-{%block content %} {%endblock%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user_detail.css' %}">
+{% endblock %}
+
+{%block content %}
+
+<div class = "user-detail-container">
+
+    {{user.id}}
+
+</div>
+
+
+{%endblock%}

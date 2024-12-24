@@ -9,26 +9,39 @@
 {% endblock %}
 
 {% block content %}
-<div class = "community_container">
-    <h1>Сообщество</h1>
-    <div class = "user-cards">
 
+<div class="community-container">
+    <div class="search-section">
+        <h1>Сообщество</h1>
+        <form method="GET" action="">
+            <input
+                type="text"
+                name="search"
+                placeholder="Введите никнейм"
+                value="{{ request.GET.search|default:'' }}"
+            />
+            <button type="submit">Поиск</button>
+        </form>
+    </div>
+
+    <div class="user-cards">
         {% for user in users %}
-
-        <div class = "user-card">
-            <a href = "{% url 'user_detail' user.id%}" >
-            <div class = "avatar-container">
-                <img src = "{{user.avatar.url}}" style="width:50px; height: 50px;">
-            </div>
-            <div class = "user-info">
-                {{user.nickname}}
-                {{user.content_count}}
-            </div>
+        <div class="user-card">
+            <a href="{% url 'user_detail' user.id %}">
+                <div class="avatar-container">
+                    <img src="{{ user.avatar.url }}" class="user-avatar">
+                </div>
+                <div class="user-info">
+                    <p class="user-nickname">{{ user.nickname }}</p>
+                    <p class="user-content-count">Количество выпущенных новостей: {{ user.content_count }}</p>
+                </div>
+            </a>
         </div>
         {% endfor %}
-
     </div>
 </div>
+
+
 {% endblock %}
 
 {% block extra_js %} {% endblock %}

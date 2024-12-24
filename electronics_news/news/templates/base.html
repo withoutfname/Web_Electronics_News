@@ -18,15 +18,17 @@
                 <li><a href="{% url 'reviews' %}" class="{% if request.path == '/reviews/' %}active{% endif %}">Обзоры</a></li>
 
                 {% if user.is_authenticated %}
+                <li><a href="{% url 'community' %}" class="{%if request.resolver_match.url_name in 'community user_detail' %}active{% endif %}">Сообщество</a></li>
+                {% else %}
+                {% endif %}
+
+                {% if user.is_authenticated %}
                 <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile/' %}active{% endif %}">Профиль</a></li>
                     {% else %}
                 <li><a href="{% url 'authorise' %}" class="{% if request.path == '/authorise/' or request.path == '/register/' or request.path == '/password_reset/' %} active{% endif %}">        Вход/регистрация</a></li>
                 {% endif %}
 
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'community' %}" class="{%if request.resolver_match.url_name in 'community user_detail' %}active{% endif %}">Сообщество</a></li>
-                {% else %}
-                {% endif %}
+
 
 
                 <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">О нас</a></li>
